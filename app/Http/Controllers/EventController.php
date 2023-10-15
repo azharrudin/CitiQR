@@ -8,6 +8,7 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use Yajra\DataTables\DataTables;
 
 class EventController extends Controller
 {
@@ -16,7 +17,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::all();
+        $x = Event::select("*")->get();
+        return DataTables::of($x)->addColumn("action", function ($c) {
+            return "<button class='btn btn-danger'><i class='bi bi-trash' onclick='deleteItem(".$c->id.")'></i></button>&nbsp;&nbsp;<button class='btn btn-success' onclick='showDialogEdit(this)'><i class='bi bi-pencil-square'></i></button>";
+        })->make(true);
     }
 
     /**
