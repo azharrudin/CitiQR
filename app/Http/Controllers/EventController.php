@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
+use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class EventController extends Controller
 {
@@ -27,9 +30,17 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEventRequest $request)
+    public function store(Request $request)
     {
-        //
+        Event::create([
+            "fullname" => $request->fullname,
+            "phone" => $request->phone,
+            "email" => $request->email,
+            "city" => $request->city,
+            "uuid" => Uuid::uuid4()->toString(),
+            "status" => 0
+
+        ]);
     }
 
     /**
