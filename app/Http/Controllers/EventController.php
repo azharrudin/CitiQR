@@ -16,7 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        // 
+        return Event::all();
     }
 
     /**
@@ -39,8 +39,8 @@ class EventController extends Controller
             "city" => $request->city,
             "uuid" => Uuid::uuid4()->toString(),
             "status" => 0
-
         ]);
+        
     }
 
     /**
