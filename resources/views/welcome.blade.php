@@ -10,6 +10,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <script src="assets/extensions/jquery/jquery.min.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -37,7 +38,7 @@
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" for="form3Example1cg">Phone Number*</label>
 
-                                        <input  id="phone" class="form-control form-control-lg" />
+                                        <input id="phone" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -45,7 +46,7 @@
                                         <input id="email" class="form-control form-control-lg" />
                                     </div>
                                     <label for="city " class="h5">City:*</label>
-                                    <select id="city" name="city" class="form-control">
+                                    <select id="city" name="city" class="form-control form-control-lg">
                                         <option value="bali">Bali</option>
                                         <option value="bandung">Bandung</option>
                                         <option value="jakarta">Jakarta</option>
@@ -57,29 +58,29 @@
 
 
                                     <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-white w-100 mt-4">Register</button>
+                                        <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-white w-100 mt-4" onclick="register()">Register</button>
                                     </div>
 
 
                                 </form>
-<script>
-    function register(){
-        $.ajax({
-            url: "{{url('api/event/register')}}",
-            method: "post",
-            data: {
-                "fullname": $("#fullname").val(),
-                "phone": $("#phone").val(),
-                "email": $("#email").val(),
-                "city": $("#city").val(),
+                                <script>
+                                    function register() {
+                                        $.ajax({
+                                            url: "{{url('api/event/register')}}",
+                                            method: "post",
+                                            data: {
+                                                "fullname": $("#fullname").val(),
+                                                "phone": $("#phone").val(),
+                                                "email": $("#email").val(),
+                                                "city": $("#city").val(),
 
-            },
-            success: function(){
-
-            }
-        })
-    }
-</script>
+                                            },
+                                            success: function() {
+                                                window.location.href = "/success"
+                                            }
+                                        })
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>

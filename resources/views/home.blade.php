@@ -12,6 +12,7 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>City</th>
+                    <th>Attended</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -54,6 +55,11 @@
             {
                 "data": "city",
                 "name": "city"
+            },
+            {
+                "data": "attended_status",
+                "name": "attended_status",
+
             },
 
         ]

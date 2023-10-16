@@ -19,7 +19,9 @@ class EventController extends Controller
     {
         $x = Event::select("*")->get();
         return DataTables::of($x)->addColumn("action", function ($c) {
-            return "<button class='btn btn-danger'><i class='bi bi-trash' onclick='deleteItem(".$c->id.")'></i></button>&nbsp;&nbsp;<button class='btn btn-success' onclick='showDialogEdit(this)'><i class='bi bi-pencil-square'></i></button>";
+            return "<button class='btn btn-danger'><i class='bi bi-oke' onclick='deleteItem(".$c->id.")'></i></button>";
+        })->addColumn("attended_status", function ($f) {
+            return $f->status == 0 ? "NOT ATTENDED" : "ATTENDED";
         })->make(true);
     }
 
@@ -44,7 +46,16 @@ class EventController extends Controller
             "uuid" => Uuid::uuid4()->toString(),
             "status" => 0
         ]);
-        
+        return response()->json(array(
+            "status" => "OK",
+            "data" => [
+                "fullname" => $request->fullname,
+                "phone" => $request->phone,
+                "email" => $request->email,
+                "city" => $request->city,
+                "status" => 0
+            ]
+        ), 200);
     }
 
     /**
@@ -52,7 +63,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        
     }
 
     /**
