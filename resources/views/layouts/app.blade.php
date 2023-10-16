@@ -34,7 +34,7 @@
 
 <body>
     <div id="app">
-        
+        @auth
         <nav class="navbar navbar-expand-sm mb-2">
             <div class="container active">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -87,6 +87,7 @@
                 </div>
             </div>
         </nav>
+        @endauth
         @auth
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">

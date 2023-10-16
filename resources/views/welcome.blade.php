@@ -37,12 +37,12 @@
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" for="form3Example1cg">Phone Number*</label>
 
-                                        <input type="email" id="phone" class="form-control form-control-lg" />
+                                        <input  id="phone" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" for="form3Example1cg">Personal Email Address*</label>
-                                        <input type="password" id="email" class="form-control form-control-lg" />
+                                        <input id="email" class="form-control form-control-lg" />
                                     </div>
                                     <label for="city " class="h5">City:*</label>
                                     <select id="city" name="city" class="form-control">

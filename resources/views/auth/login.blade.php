@@ -1,10 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="r">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <section class="vh-100">
+            <div class="container h-75">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5 pt-0">
+                        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="card-body text-center">
+
+                                <h3 class="mb-5">Admin Login</h3>
+
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="typeEmailX-2" class="form-control form-control-lg form-control @error('email') is-invalid @enderror" placeholder="email" name="email" />
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg  @error('password') is-invalid @enderror"" placeholder="passsword" name="password"/>
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <!-- Checkbox -->
+                                <div class="form-check d-flex justify-content-start mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                                    <label class="form-check-label" for="form1Example3">&nbsp;Remember Me </label>
+                                </div>
+
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+                                <hr class="my-4">
+
+
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!--
+        <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -68,6 +114,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </div>
 @endsection
