@@ -87,6 +87,7 @@
                 </div>
             </div>
         </nav>
+        @auth
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
@@ -132,6 +133,7 @@
                 </div>
             </div>
         </div>
+        @endauth
         <main>
             @yield('content')
         </main>
