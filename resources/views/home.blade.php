@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="mt-5">
-        <table id="example" class="display compact table table-striped" style="width:100%">
+<div class="main" id="main">
+   
+    <div class="mt-5 card p-3 rounded" style="min-height: 60vh;background: white;">
+        <table id="example" class="table table-bordered table-responsive table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -13,50 +14,49 @@
                     <th>City</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
-
+            <tbody></tbody>
         </table>
     </div>
 </div>
 <script>
-      var table = $('#example').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": {
-                    url: "{{ url('api/event/') }}",
+    var table = $('#example').DataTable({
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ],
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            url: "{{ url('api/event/') }}",
 
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 
-                    }
-                },
+            }
+        },
 
+        "columns": [{
+                "data": "id",
+                "name": "id"
+            },
+            {
+                "data": "fullname",
+                "name": "fullname"
+            },
+            {
+                "data": "phone",
+                "name": "phone"
+            },
 
-                "columns": [{
-                        "data": "id",
-                        "name": "id"
-                    },
-                    {
-                        "data": "fullname",
-                        "name": "fullname"
-                    },
-                    {
-                        "data": "phone",
-                        "name": "phone"
-                    },
+            {
+                "data": "email",
+                "name": "email"
+            },
+            {
+                "data": "city",
+                "name": "city"
+            },
 
-                    {
-                        "data": "email",
-                        "name": "email"
-                    },
-                    {
-                        "data": "city",
-                        "name": "city"
-                    },
-
-                ]
-            });
-
-    </script>
+        ]
+    });
+</script>
 @endsection

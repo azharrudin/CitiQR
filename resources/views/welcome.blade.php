@@ -31,25 +31,29 @@
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" for="form3Example1cg">Full Name*</label>
 
-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                        <input type="text" id="fullname" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" for="form3Example1cg">Phone Number*</label>
 
-                                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                                        <input type="email" id="phone" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" for="form3Example1cg">Personal Email Address*</label>
-                                        <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                                        <input type="password" id="email" class="form-control form-control-lg" />
                                     </div>
+                                    <label for="city " class="h5">City:*</label>
+                                    <select id="city" name="city" class="form-control">
+                                        <option value="bali">Bali</option>
+                                        <option value="bandung">Bandung</option>
+                                        <option value="jakarta">Jakarta</option>
+                                        <option value="medan">Medan</option>
+                                        <option value="semarang">Semarang</option>
+                                        <option value="surabaya">Surabaya</option>
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label h5" for="form3Example4cdg">City*</label>
-
-                                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                    </div>
+                                    </select>
 
 
                                     <div class="d-flex justify-content-center">
@@ -58,7 +62,24 @@
 
 
                                 </form>
+<script>
+    function register(){
+        $.ajax({
+            url: "{{url('api/event/register')}}",
+            method: "post",
+            data: {
+                "fullname": $("#fullname").val(),
+                "phone": $("#phone").val(),
+                "email": $("#email").val(),
+                "city": $("#city").val(),
 
+            },
+            success: function(){
+
+            }
+        })
+    }
+</script>
                             </div>
                         </div>
                     </div>
