@@ -19,7 +19,7 @@ class EventController extends Controller
     {
         $x = Event::select("*")->get();
         return DataTables::of($x)->addColumn("action", function ($c) {
-            return "<button class='btn btn-danger'><i class='bi bi-oke' onclick='deleteItem(".$c->id.")'></i></button>";
+            return "<button class='btn btn-success'  onclick='update(".$c->id.")'><i class='bi bi-check2-square'></i></button>";
         })->addColumn("attended_status", function ($f) {
             return $f->status == 0 ? "NOT ATTENDED" : "ATTENDED";
         })->make(true);
@@ -77,9 +77,22 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(Request $request)
     {
-        //
+        $obj = Event::find($request->id);
+        $obj->update(array(
+            "status" => 1
+        ));
+        return response()->json(array(
+            "status" => "OK",
+            "data" => [
+                "fullname" => $request->fullname,
+                "phone" => $request->phone,
+                "email" => $request->email,
+                "city" => $request->city,
+                "status" => 1
+            ]
+        ), 200);
     }
 
     /**

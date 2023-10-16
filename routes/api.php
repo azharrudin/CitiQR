@@ -23,5 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix("/event")->group(function(){
     Route::get('/', [App\Http\Controllers\EventController::class, 'index']);
     Route::post('/register', [App\Http\Controllers\EventController::class, 'store']);
-
+    Route::post('/update', [App\Http\Controllers\EventController::class, 'update']);
 });

@@ -13,6 +13,7 @@
                     <th>Email</th>
                     <th>City</th>
                     <th>Attended</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -20,7 +21,7 @@
     </div>
 </div>
 <script>
-    var table = $('#example').DataTable({
+    table = $('#example').DataTable({
         buttons: [
             'copy', 'excel', 'pdf'
         ],
@@ -61,8 +62,25 @@
                 "name": "attended_status",
 
             },
+            {
+                "data": "action",
+                "name": "action",
+
+            },
 
         ]
     });
+    function update(id){
+        $.ajax({
+            url: "{{url('api/event/update')}}",
+            method: "POST",
+            data: {
+                "id": id
+            },
+            success: function(){
+                table.ajax.reload();
+            }
+        })
+    }
 </script>
 @endsection
