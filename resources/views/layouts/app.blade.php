@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <!-- Assets for mazer admin theme -->
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css">
 
@@ -23,9 +25,13 @@
     <script src="assets/js/extensions/datatables.js"></script>
     <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
-  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<style>
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -35,10 +41,13 @@
 <body>
     <div id="app">
         @auth
-        <nav class="navbar navbar-expand-sm mb-2">
+        <nav class="navbar navbar-expand-sm mb-2" style="background-color: white;">
             <div class="container active">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="nav-item w-50 text-center text-dark" href="{{ url('/') }}" style="text-decoration: none;">
+                @if (Route::has('home'))
+             <h5 class="mb-0">Guest Data</h5>
+                @endif
+                  
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -94,7 +103,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a href="index.html"><img width="auto" src="assets/images/logo/logo.jpeg" alt="Logo" srcset="" style="min-height: 50px;"></a>
+                            <a href="index.html"><img width="auto" src="assets/images/logo/logo.svg" alt="Logo" srcset="" style="min-height: 30px;"></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
@@ -108,7 +117,7 @@
                                 </g>
                             </svg>
                             <div class="form-check form-switch fs-6">
-                                <input class="form-check-input  me-0" type="checkbox" id="toggle-dark">
+                                <input class="form-check-input  me-0" type="checkbox" id="toggle-dark" disabled>
                                 <label class="form-check-label"></label>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -129,7 +138,7 @@
                                 <span>Guest Data</span>
                             </a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>

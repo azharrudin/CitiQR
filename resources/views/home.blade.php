@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="main" id="main">
-   
-    <div class="mt-5 card p-3 rounded" style="min-height: 60vh;background: white;">
+   <h5>Home > <b>Dashboard</b></h5>
+    <div class="mt-3 card p-3 rounded" style="min-height: 60vh;background: white;">
         <table id="example" class="table table-bordered table-responsive table-striped">
             <thead>
                 <tr>
