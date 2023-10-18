@@ -42,12 +42,6 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-        Mail::send('email.qr', compact("request"), function ($message) use ($request) {
-            $message->to($request->email, 'Recipient Name')
-                    ->subject('Welcome to Our Application');
-        });
         try {
             Event::create([
                 "fullname" => $request->fullname,
@@ -57,6 +51,10 @@ class EventController extends Controller
                 "uuid" => Uuid::uuid4()->toString(),
                 "status" => 0
             ]);
+            Mail::send('email.qr', compact("request"), function ($message) use ($request) {
+                $message->to($request->email, 'Recipient Name')
+                        ->subject('Welcome to Our Application');
+            });
             return response()->json(array(
                 "status" => "OK",
                 "data" => [
@@ -69,10 +67,8 @@ class EventController extends Controller
             ), 200);
         } catch (QueryException $e) {
             return  $request->validate([
-                'fullname' => 'required|unique:events,fullname',
                 'phone' => 'required|unique:events,phone',
                 'email' => 'required|email|unique:events,email',
-                'uuid' => 'required|unique:events,uuid',
             ]);
         }
     }
