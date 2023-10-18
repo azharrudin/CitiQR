@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Yajra\DataTables\DataTables;
+use chillerlan\QRCode\QRCode;
 
 class EventController extends Controller
 {
@@ -19,18 +20,21 @@ class EventController extends Controller
     {
         $x = Event::select("*")->get();
         return DataTables::of($x)->addColumn("action", function ($c) {
-            return "<button class='btn btn-success'  onclick='update(".$c->id.")'><i class='bi bi-check2-square'></i></button>";
+            return "<button class='btn btn-success'  onclick='update(".$c->id.")'><i class='bi bi-check2-square'></i></button>&nbsp;<button class='btn btn-warning'  onclick='window.location.href = \"/api/event/getqr?id=$c->uuid\"' ><i class='bi bi-eye'></i></button>";
         })->addColumn("attended_status", function ($f) {
             return $f->status == 0 ? "NOT ATTENDED" : "ATTENDED";
         })->make(true);
     }
 
     /**
-     * Register new customer
+     * generate QR based on UUID
      */
-    public function create()
+    public function generateqr(Request $request)
     {
-        
+        $data = $request->id;
+
+        // quick and simple:
+        echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';   
     }
 
     /**
