@@ -48,7 +48,6 @@ class EventController extends Controller
             $message->to($request->email, 'Recipient Name')
                     ->subject('Welcome to Our Application');
         });
-        return "x";
         try {
             Event::create([
                 "fullname" => $request->fullname,
