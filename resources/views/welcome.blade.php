@@ -24,29 +24,31 @@
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                         <div class="card mt-sm-2 mt-md-2 mb-sm-2 mb-md-1 margin-phones" style="border-radius: 15px;">
                             <div class="card-body p-lg-5  p-md-2  p-sm-1 p-md-1">
-                                <h2 class="text-uppercase text-center" style="color: #000080;">EVENT REGISTRATION</h2>
-                                <h5 class="text-muted text-center mb-5">"Citi Indonesia Consumer Bank Appreciation Night - Greater Things to Come"</h5>
+                                <h2 class="text-uppercase text-center" style="color: #000080;font-weight: 800;">EVENT REGISTRATION</h2>
+                                <h5 class="text-muted text-center mb-5" style="font-weight: 200;">"Citi Indonesia Consumer Bank Appreciation Night - Greater Things to Come"</h5>
 
                                 <form>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" style="color: #000080;" for="form3Example1cg">Full Name*</label>
-
                                         <input type="text" id="fullname" class="form-control form-control-lg" placeholder="E.g. Putra Cahaya Pratama"/>
+                                        <span class="text-danger h6" id="err_fullname"></span>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5"  style="color: #000080;" for="form3Example1cg">Phone Number*</label>
+                                        <input id="phone" class="form-control form-control-lg" placeholder="E.g. 6281296651667" type="number"/>
+                                        <span class="text-danger h6" id="err_phone"></span>
 
-                                        <input id="phone" class="form-control form-control-lg" placeholder="E.g. 6281296651667"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label h5" style="color: #000080;" for="form3Example1cg">Personal Email Address*</label>
-                                        <input id="email" class="form-control form-control-lg" placeholder="E.g. putra.cp@email.com" />
+                                        <input id="email" class="form-control form-control-lg" placeholder="E.g. putra.cp@email.com" type="email" />
+                                        <span class="text-danger h6" id="err_email"></span>
                                     </div>
                                     <label for="city " class="h5" style="color: #000080;">City:*</label>
-                                    <select id="city" name="city" class="form-control form-control-lg">
+                                    <select id="city" name="city" class="form-control form-control-lg text-muted">
                                         <option value="bali">Bali</option>
                                         <option value="bandung">Bandung</option>
                                         <option value="jakarta">Jakarta</option>
@@ -73,10 +75,16 @@
                                                 "phone": $("#phone").val(),
                                                 "email": $("#email").val(),
                                                 "city": $("#city").val(),
-
                                             },
                                             success: function() {
                                                 window.location.href = "/success"
+                                            },
+                                            error: function(xhr){
+                                                var f = JSON.parse(xhr.responseText)
+                                                $("#err_email").html(f["errors"]["email"])
+                                                $("#err_fullname").html(f["errors"]["fullname"] || "")
+                                                $("#err_phone").html(f["errors"]["phone"] || "")
+
                                             }
                                         })
                                     }

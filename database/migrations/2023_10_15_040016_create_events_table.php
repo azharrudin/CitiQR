@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string("fullname");
-            $table->string("phone");
-            $table->string("email");
+            $table->string("fullname")->unique();
+            $table->string("phone")->unique();
+            $table->string("email")->unique();
             $table->string("city");
-            $table->string("uuid");
+            $table->string("uuid")->unique();
             $table->integer("status");
             $table->timestamps();
             $table->softDeletes();
