@@ -31,6 +31,25 @@
     * {
         font-family: 'Poppins', sans-serif;
     }
+    @media (min-width: 900px) { 
+        .margin-phones {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .width-button {
+            width: 300px;
+        }
+     }
+    @media (max-width: 480px) { 
+        .margin-phones {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .width-button {
+            width: 200px;
+        }
+     }
+     
 </style>
 
     <!-- Scripts -->

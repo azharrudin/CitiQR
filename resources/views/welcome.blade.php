@@ -22,30 +22,30 @@
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                        <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center ">EVENT REGISTRATION</h2>
+                        <div class="card mt-sm-2 mt-md-2 mb-sm-2 mb-md-1 margin-phones" style="border-radius: 15px;">
+                            <div class="card-body p-lg-5  p-md-2  p-sm-1 p-md-1">
+                                <h2 class="text-uppercase text-center" style="color: #000080;">EVENT REGISTRATION</h2>
                                 <h5 class="text-muted text-center mb-5">"Citi Indonesia Consumer Bank Appreciation Night - Greater Things to Come"</h5>
 
                                 <form>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label h5" for="form3Example1cg">Full Name*</label>
+                                        <label class="form-label h5" style="color: #000080;" for="form3Example1cg">Full Name*</label>
 
-                                        <input type="text" id="fullname" class="form-control form-control-lg" />
+                                        <input type="text" id="fullname" class="form-control form-control-lg" placeholder="E.g. Putra Cahaya Pratama"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label h5" for="form3Example1cg">Phone Number*</label>
+                                        <label class="form-label h5"  style="color: #000080;" for="form3Example1cg">Phone Number*</label>
 
-                                        <input id="phone" class="form-control form-control-lg" />
+                                        <input id="phone" class="form-control form-control-lg" placeholder="E.g. 6281296651667"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label h5" for="form3Example1cg">Personal Email Address*</label>
-                                        <input id="email" class="form-control form-control-lg" />
+                                        <label class="form-label h5" style="color: #000080;" for="form3Example1cg">Personal Email Address*</label>
+                                        <input id="email" class="form-control form-control-lg" placeholder="E.g. putra.cp@email.com" />
                                     </div>
-                                    <label for="city " class="h5">City:*</label>
+                                    <label for="city " class="h5" style="color: #000080;">City:*</label>
                                     <select id="city" name="city" class="form-control form-control-lg">
                                         <option value="bali">Bali</option>
                                         <option value="bandung">Bandung</option>
@@ -58,7 +58,7 @@
 
 
                                     <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-white w-100 mt-4" onclick="register()">Register</button>
+                                        <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-white w-50 mt-4" onclick="register()" style="background: #000080;">Register</button>
                                     </div>
 
 
