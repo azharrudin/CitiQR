@@ -44,6 +44,7 @@
         </div>
         <div class="qr-code">
             <img src="{{ asset('qrcode/')}}/{{$uuid.'.png'}}">
+            
         </div>
     </div>
 </body>
