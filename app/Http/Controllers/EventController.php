@@ -33,8 +33,9 @@ class EventController extends Controller
     public function generateqr(Request $request)
     {
         $data = $request->id;
+        $qr = QrCode::generate($data);
         // quick and simple:
-        echo '<img src="' . (new QRCode)->render($data) . '" alt="QR Code" />';
+        echo $qr;
     }
 
     /**
