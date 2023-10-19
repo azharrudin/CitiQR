@@ -19,8 +19,8 @@
             padding: 20px;
         }
         .qr-code {
-            float: right;
-            margin-top: 20px;
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -37,7 +37,11 @@
             <ul>
                 <li>Date: Friday, November 10th 2023</li>
                 <li>Time: 18.00 – 22.00</li>
+                @if ($city == 'bandung')
+                <li>Venue: Pullman Bandung Grand Central</li>
+                @else
                 <li>Venue: Mulia Hotel Jakarta</li>
+                @endif
                 <li>Dress Code: Cocktail Attire</li>
             </ul>
             <p>*please show your QR Code at the registration booth</p>
