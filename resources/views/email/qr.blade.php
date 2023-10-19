@@ -1,3 +1,4 @@
+@use SimpleSoftwareIO\QrCode\Facades\QrCode
 <!DOCTYPE html>
 <html>
 <head>
