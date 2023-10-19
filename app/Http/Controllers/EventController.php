@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Yajra\DataTables\DataTables;
-use chillerlan\QRCode\QRCode;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\ImageRendererInterface;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Renderer\RendererInterface;
+use BaconQrCode\Writer;
 use Illuminate\Database\QueryException;
 use Mail;
 class EventController extends Controller
@@ -42,19 +46,27 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $uuid = Uuid::uuid4()->toString();
+        $data = [
+            'fullname' => $request->fullname,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'city' => $request->city,
+            'uuid' => $uuid,
+        ];
+
+        Mail::send('email.qr', $data, function ($message) use ($request) {
+            $message->to($request->email, 'Recipient Name')->subject('Welcome to Our Application');
+        });
         try {
             Event::create([
                 "fullname" => $request->fullname,
                 "phone" => $request->phone,
                 "email" => $request->email,
                 "city" => $request->city,
-                "uuid" => Uuid::uuid4()->toString(),
+                "uuid" => $uuid,
                 "status" => 0
             ]);
-            Mail::send('email.qr', compact("request"), function ($message) use ($request) {
-                $message->to($request->email, 'Recipient Name')
-                        ->subject('Welcome to Our Application');
-            });
             return response()->json(array(
                 "status" => "OK",
                 "data" => [
@@ -66,10 +78,10 @@ class EventController extends Controller
                 ]
             ), 200);
         } catch (QueryException $e) {
-            return  $request->validate([
-                'phone' => 'required|unique:events,phone',
-                'email' => 'required|email|unique:events,email',
-            ]);
+            // return  $request->validate([
+            //     'phone' => 'required|unique:events,phone',
+            //     'email' => 'required|email|unique:events,email',
+            // ]);
         }
     }
 
