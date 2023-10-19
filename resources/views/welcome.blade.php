@@ -27,7 +27,7 @@
                         <div class="card mt-sm-2 mt-md-2 mb-sm-2 mb-md-1 margin-phones" style="border-radius: 15px;">
                             <div class="card-body p-lg-5  p-md-2  p-sm-1 p-md-1">
                                 <h2 class="text-uppercase text-center" style="color: #000080;font-weight: 800;">EVENT REGISTRATION</h2>
-                                <h5 class="text-muted text-center mb-5" style="font-weight: 200;">"Citi Indonesia Consumer Bank Appreciation Night - Greater Things to Come"</h5>
+                                <h5 class="text-muted text-center mb-5" style="font-weight: 400;">"Citi Indonesia Consumer Bank Appreciation Night - Greater Things to Come"</h5>
 
                                 <form>
 
