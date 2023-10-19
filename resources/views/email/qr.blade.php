@@ -1,4 +1,3 @@
-@use SimpleSoftwareIO\QrCode\Facades\QrCode
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +43,7 @@
             <p>*please show your QR Code at the registration booth</p>
         </div>
         <div class="qr-code">
-            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($uuid)) !!} ">
+            <img src="{{ asset('qrcode/')}}/{{$uuid.'.png'}}">
         </div>
     </div>
 </body>

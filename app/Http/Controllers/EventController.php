@@ -9,13 +9,9 @@ use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Yajra\DataTables\DataTables;
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\ImageRendererInterface;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use BaconQrCode\Renderer\RendererInterface;
-use BaconQrCode\Writer;
 use Illuminate\Database\QueryException;
 use Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class EventController extends Controller
 {
     /**
@@ -47,6 +43,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $uuid = Uuid::uuid4()->toString();
+        QrCode::format('png')->size(250)->generate($uuid, '../public/qrcode/'.$uuid.'.png');
         $data = [
             'fullname' => $request->fullname,
             'phone' => $request->phone,
