@@ -43,7 +43,7 @@
             <p>*please show your QR Code at the registration booth</p>
         </div>
         <div class="qr-code">
-            <img src="{{ asset('qrcode/')}}/{{$uuid.'.svg'}}">
+            <img src="{{ asset('qrcode/')}}/{{$uuid.'.png'}}">
         </div>
     </div>
 </body>
