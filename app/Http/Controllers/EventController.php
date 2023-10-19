@@ -53,7 +53,7 @@ class EventController extends Controller
         ];
 
         Mail::send('email.qr', $data, function ($message) use ($request) {
-            $message->to($request->email, 'Recipient Name')->subject('Welcome to Our Application');
+            $message->to($request->email, $request->fullname)->subject('Thank You for Registering');
         });
         try {
             Event::create([

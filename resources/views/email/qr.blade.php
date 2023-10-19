@@ -17,14 +17,6 @@
         }
         .content {
             padding: 20px;
-            display: flex;
-            flex-direction: row;
-        }
-        .left-column {
-            flex: 60%;
-        }
-        .right-column {
-            flex: 40%;
         }
         .qr-code {
             float: right;
@@ -39,21 +31,19 @@
             <p>Citi Indonesia Consumer Bank Appreciation Night “Greater Things to Come”</p>
         </div>
         <div class="content justify">
-            <div class="left-column">
-                <p>Dear {{ $fullname }},</p>
-                <p>We are delighted to inform you that your registration for “Citi Indonesia Consumer Bank Appreciation Night – Greater Things to Come” is now complete. Your presence means a lot to us, and we can't wait to welcome you on November 10th, 2023. Get ready for an unforgettable experience filled with teams.</p>
-                <p>Citi Indonesia Consumer Bank Appreciation Night – Greater Things to Come, will be held on:</p>
-                <ul>
-                    <li>Date: Friday, November 10th 2023</li>
-                    <li>Time: 18.00 – 22.00</li>
-                    <li>Venue: Mulia Hotel Jakarta</li>
-                    <li>Dress Code: Cocktail Attire</li>
-                </ul>
-                <p>*please show your QR Code at the registration booth</p>
-            </div>
-            <div class="right-column">
-                <img src="{{ asset('qrcode/')}}/{{$uuid.'.png'}}">
-            </div>
+            <p>Dear {{ $fullname }},</p>
+            <p>We are delighted to inform you that your registration for “Citi Indonesia Consumer Bank Appreciation Night – Greater Things to Come” is now complete. Your presence means a lot to us, and we can't wait to welcome you on November 10th, 2023. Get ready for an unforgettable experience filled with teams.</p>
+            <p>Citi Indonesia Consumer Bank Appreciation Night – Greater Things to Come, will be held on:</p>
+            <ul>
+                <li>Date: Friday, November 10th 2023</li>
+                <li>Time: 18.00 – 22.00</li>
+                <li>Venue: Mulia Hotel Jakarta</li>
+                <li>Dress Code: Cocktail Attire</li>
+            </ul>
+            <p>*please show your QR Code at the registration booth</p>
+        </div>
+        <div class="qr-code">
+            <img src="{{ asset('qrcode/')}}/{{$uuid.'.png'}}">
         </div>
     </div>
 </body>
