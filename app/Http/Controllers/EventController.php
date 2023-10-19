@@ -43,7 +43,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $uuid = Uuid::uuid4()->toString();
-        QrCode::format('png')->size(250)->generate($uuid, '../public/qrcode/'.$uuid.'.svg');
+        QrCode::size(250)->generate($uuid, '../public/qrcode/'.$uuid.'.svg');
         $data = [
             'fullname' => $request->fullname,
             'phone' => $request->phone,
