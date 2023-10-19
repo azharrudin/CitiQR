@@ -17,8 +17,6 @@ class Controller extends BaseController
      */
     public function success_register()
     {
-        $uuid = Uuid::uuid4()->toString();
-        return QrCode::format('png')->size(250)->generate($uuid, '../public/qrcode/'.$uuid.'.png');
         return view('success_register');
     }
 }

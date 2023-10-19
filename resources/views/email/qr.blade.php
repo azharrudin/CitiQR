@@ -19,7 +19,7 @@
             padding: 20px;
         }
         .qr-code {
-            float: right;
+            float: center;
             margin-top: 20px;
         }
     </style>
