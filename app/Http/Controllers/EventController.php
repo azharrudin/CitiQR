@@ -75,10 +75,10 @@ class EventController extends Controller
                 ]
             ), 200);
         } catch (QueryException $e) {
-            // return  $request->validate([
-            //     'phone' => 'required|unique:events,phone',
-            //     'email' => 'required|email|unique:events,email',
-            // ]);
+            return  $request->validate([
+                'phone' => 'required|unique:events,phone',
+                'email' => 'required|email|unique:events,email',
+            ]);
         }
     }
 
