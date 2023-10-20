@@ -119,11 +119,25 @@ class EventController extends Controller
         ), 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
+      /**
+     * Update the specified resource in storage.
      */
-    public function destroy(Event $event)
+    public function updatescan(Request $request)
     {
-        //
+        $obj = Event::where("uuid","=",$request->uuid);
+        $obj->update(array(
+            "status" => 1
+        ));
+        return response()->json(array(
+            "status" => "OK",
+            "data" => [
+                "fullname" => $request->fullname,
+                "phone" => $request->phone,
+                "email" => $request->email,
+                "city" => $request->city,
+                "status" => 1
+            ]
+        ), 200);
     }
+    
 }

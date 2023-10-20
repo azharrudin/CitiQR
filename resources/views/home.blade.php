@@ -2,9 +2,14 @@
 
 @section('content')
 <div class="main" id="main">
-   <h5>Home > <b>Dashboard</b></h5>
-    <div class="mt-3 card p-3 rounded" style="min-height: 60vh;background: white;">
-        <table id="example" class="table table-bordered table-responsive table-striped">
+    <header class="mb-3">
+        <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+    <h5>Home > <b>Dashboard</b></h5>
+    <div class="mt-3 card p-3 rounded" style="min-height: 60vh;background: white;max-width: 100%;overflow-x: scroll;">
+        <table id="example" class="compact table table-bordered table-responsive table-striped w-100" style="max-width: 100%;">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -27,6 +32,7 @@
         ],
         "processing": true,
         "serverSide": true,
+        "responsive": true,
         "ajax": {
             url: "{{ url('api/event/') }}",
 
@@ -70,14 +76,16 @@
 
         ]
     });
-    function update(id){
+    $('div.dataTables_filter input').addClass('form-control mb-2');
+
+    function update(id) {
         $.ajax({
             url: "{{url('api/event/update')}}",
             method: "POST",
             data: {
                 "id": id
             },
-            success: function(){
+            success: function() {
                 table.ajax.reload();
             }
         })

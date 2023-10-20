@@ -14,8 +14,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <!-- Assets for mazer admin theme -->
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css">
 
@@ -27,30 +27,37 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<style>
-    * {
-        font-family: 'Poppins', sans-serif;
-    }
-    @media (min-width: 900px) { 
-        .margin-phones {
-            margin-top: 0px;
-            margin-bottom: 0px;
+    <script src="{{url('extlib/mebjas-qrscan.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
         }
-        .width-button {
-            width: 300px;
+
+        @media (min-width: 900px) {
+            .margin-phones {
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+            .width-button {
+                width: 300px;
+            }
         }
-     }
-    @media (max-width: 480px) { 
-        .margin-phones {
-            margin-top: 10px;
-            margin-bottom: 10px;
+
+        @media (max-width: 480px) {
+            .margin-phones {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .width-button {
+                width: 200px;
+            }
         }
-        .width-button {
-            width: 200px;
-        }
-     }
-     
-</style>
+    </style>
 
     <!-- Scripts -->
 
@@ -58,14 +65,17 @@
 
 <body>
     <div id="app">
+    <script src="assets/static/js/initTheme.js"></script>
         @auth
         <nav class="navbar navbar-expand-sm mb-2" style="background-color: white;">
             <div class="container active">
                 <a class="nav-item w-50 text-center text-dark" href="{{ url('/') }}" style="text-decoration: none;">
-                @if (Route::has('home'))
-             <h5 class="mb-0">Guest Data</h5>
-                @endif
-                  
+                    @if (Route::has('home'))
+                    <h5 class="mb-0">Guest Data</h5>
+                    @endif
+                    @if (Route::has('scan'))
+                    <h5 class="mb-0">Scan Page</h5>
+                    @endif
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -135,7 +145,7 @@
                                 </g>
                             </svg>
                             <div class="form-check form-switch fs-6">
-                                <input class="form-check-input  me-0" type="checkbox" id="toggle-dark" disabled>
+                                <input class="form-check-input  me-0" type="checkbox" id="toggle-dark" >
                                 <label class="form-check-label"></label>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -148,12 +158,29 @@
                     </div>
                 </div>
                 <div class="sidebar-menu">
-                    <ul class="menu">
-
+                    <ul class="menu mb-0">
                         <li class="sidebar-item @if (Str::contains(request()->url(), 'home')) active @endif">
                             <a href="/home" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Guest Data</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="menu mt-0 mb-0">
+                        <li class="sidebar-item @if (Str::contains(request()->url(), 'scan')) active @endif">
+                            <a href="/scan" class='sidebar-link'>
+                                <i class="bi bi-person-circle"></i>
+                                <span>Attendance</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="menu mt-0">
+                        <li class="sidebar-item">
+                            <a href="/home" class='sidebar-link'>
+                                <i class="bi bi-door-exit"></i>
+                                <span>Logout</span>
                             </a>
                         </li>
 

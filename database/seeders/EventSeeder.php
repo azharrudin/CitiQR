@@ -15,7 +15,7 @@ class EventSeeder extends Seeder
     public function run(): void
     {
  
-    	for($i = 1; $i <= 500; $i++){
+    	for($i = 1; $i <= 10; $i++){
             $faker = Faker::create('id_ID');
             $a=array("bali","bandung","jakarta","medan","semarang", "surabaya");
             $random_keys=array_rand($a,1);

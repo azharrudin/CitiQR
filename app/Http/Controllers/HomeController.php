@@ -25,5 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function attendance_scanner_page(Request $request)
+    {
+        return view("attendance_scanner");   
+    }
 
 }

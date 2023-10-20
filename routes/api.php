@@ -24,6 +24,8 @@ Route::prefix("/event")->group(function(){
     Route::get('/', [App\Http\Controllers\EventController::class, 'index']);
     Route::post('/register', [App\Http\Controllers\EventController::class, 'store']);
     Route::post('/update', [App\Http\Controllers\EventController::class, 'update']);
+    Route::post('/updatescan', [App\Http\Controllers\EventController::class, 'updatescan']);
+
     Route::get('/getqr', [App\Http\Controllers\EventController::class, 'generateqr']);
 
 });
