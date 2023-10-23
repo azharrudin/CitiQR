@@ -18,6 +18,8 @@
                     <th>Email</th>
                     <th>City</th>
                     <th>Attended</th>
+                    <th>UUID</th>
+
                     <th>Action</th>
                 </tr>
             </thead>
@@ -66,6 +68,11 @@
             {
                 "data": "attended_status",
                 "name": "attended_status",
+
+            },
+            {
+                "data": "uuid",
+                "name": "uuid",
 
             },
             {

@@ -21,10 +21,10 @@ class EventController extends Controller
     {
         $x = Event::select("*")->get();
         return DataTables::of($x)->addColumn("action", function ($c) {
-            return "<button class='btn btn-success'  onclick='update(" . $c->id . ")'><i class='bi bi-check2-square'></i></button>&nbsp;<button class='btn btn-warning'  onclick='window.location.href = \"/api/event/getqr?id=$c->uuid\"' ><i class='bi bi-eye'></i></button>";
+            return "<button class='btn btn-success m-1'  onclick='update(" . $c->id . ")'><i class='bi bi-check2-square'></i></button><button class='btn btn-warning m-1'  onclick='window.location.href = \"/api/event/getqr?id=$c->uuid\"' ><i class='bi bi-eye'></i></button>";
         })->addColumn("attended_status", function ($f) {
-            return $f->status == 0 ? "NOT ATTENDED" : "ATTENDED";
-        })->make(true);
+            return $f->status == 0 ? "<span class='badge bg-danger'>NOT ATTENDED</span>" : "<span class='badge bg-success'>ATTENDED</span>";
+        })->rawColumns(["attended_status", "action"])->make(true);
     }
 
     /**
@@ -119,7 +119,7 @@ class EventController extends Controller
         ), 200);
     }
 
-      /**
+    /**
      * Update the specified resource in storage.
      */
     public function updatescan(Request $request)
@@ -139,5 +139,12 @@ class EventController extends Controller
             ]
         ), 200);
     }
-    
+    /**
+     * getinformation
+     */
+    public function getinfo(Request $request)
+    {
+        $obj = Event::where("uuid","=",$request->uuid);
+        return $obj->get();
+    }
 }

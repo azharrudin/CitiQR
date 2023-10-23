@@ -179,7 +179,7 @@
                     <ul class="menu mt-0">
                         <li class="sidebar-item">
                             <a href="/home" class='sidebar-link'>
-                                <i class="bi bi-door-exit"></i>
+                            <i class="bi bi-box-arrow-in-left"></i>
                                 <span>Logout</span>
                             </a>
                         </li>
