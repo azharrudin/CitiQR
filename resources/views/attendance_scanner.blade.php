@@ -16,10 +16,10 @@
             $.ajax({
                 url: "{{url('api/event/getinfo')}}?uuid=" + decodedText,
                 method: "GET",
-                
-                complete: function(data){
-        console.log(data.responseText);
-                    
+
+                complete: function(data) {
+                    console.log(data.responseText);
+
                     var json = JSON.parse(data.responseText)[0]
                     Swal.fire({
                         title: 'Data confirmation?',
@@ -28,7 +28,7 @@
                         showCancelButton: true,
                         confirmButtonColor: 'blue',
                         cancelButtonColor: '#d33',
-                        footer: "Current status: "+(json.status == "0" ? "NOT ATTENDED" : "ATTENDED"),
+                        footer: "Current status: " + (json.status == "0" ? "NOT ATTENDED" : "ATTENDED"),
                         confirmButtonText: 'Confirm!'
                     }).then((result) => {
                         if (result.isConfirmed) {
@@ -44,8 +44,15 @@
     var html5QrcodeScanner = new Html5QrcodeScanner(
         "reader", {
             fps: 10,
-            qrbox: 270
-        });
+            qrbox: 270,
+            videoConstraints: {
+                facingMode: {
+                    exact: "environment"
+                },
+            },
+        },
+
+    );
     html5QrcodeScanner.render(onScanSuccess);
 
     function update(id) {
